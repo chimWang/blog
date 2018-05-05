@@ -108,7 +108,7 @@
               @include bis('./images/#{$bg}.svg');
               &:hover {
                 @include bis('./images/#{$bg}1.svg');
-                transform: scale(1.3);
+                transform: scale(1.2);
               }
             }
           }

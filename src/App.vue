@@ -5,11 +5,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-/* eslint-disable */
-
-  export default{
-    name: 'App'
-  };
+export default{
+  name: 'App'
+}
 </script>
 
 <style lang="scss">

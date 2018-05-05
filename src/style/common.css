@@ -1,5 +1,5 @@
 @charset "UTF-8";
-body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4, h5, h6, i, b, textarea, button, input, select, figure, figcaption {
+body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, i, b, textarea, button, input, select, figure, figcaption {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -10,8 +10,15 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
   font-family: "Microsoft Yahei";
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent; }
-  body:hover, div:hover, span:hover, header:hover, footer:hover, nav:hover, section:hover, aside:hover, article:hover, ul:hover, dl:hover, dt:hover, dd:hover, li:hover, a:hover, p:hover, h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, i:hover, b:hover, textarea:hover, button:hover, input:hover, select:hover, figure:hover, figcaption:hover {
+  body:hover, div:hover, span:hover, header:hover, footer:hover, nav:hover, section:hover, aside:hover, article:hover, ul:hover, dl:hover, dt:hover, dd:hover, li:hover, a:hover, p:hover, i:hover, b:hover, textarea:hover, button:hover, input:hover, select:hover, figure:hover, figcaption:hover {
     outline: none; }
+
+h1, h2, h3, h4, h5 {
+  margin: 0; }
+
+time {
+  display: block;
+  color: #666; }
 
 /*定义滚动条高宽及背景，高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
