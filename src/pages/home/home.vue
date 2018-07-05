@@ -8,7 +8,7 @@
       <div><h4>Welcome to our blog</h4></div>
       <div class="page-project">
         <section>
-          <router-link tag="div" to="/blog" class="blog-icon"></router-link>
+          <router-link tag="div" to="/blog/blogList" class="blog-icon"></router-link>
           <p>主页</p>
         </section>
         <section>
@@ -29,43 +29,33 @@
 </template>
 
 <script type="text/ecmascript-6">
-
+export default{
+}
 </script>
 
 <style scoped lang="scss">
   @import "../../style/mixin";
   $bgImg: blog, design, timeline, message;
-  @keyframes titleMove {
-    0% {
-      transform: scale(1);
-    }
-    35% {
-      transform: scale(.8)
-    }
-    70% {
-      transform: scale(1.2);
-      color: #555555
-    }
-    100% {
-      transform: scale(1)
-    }
-  }
 
   @media only screen and (max-width: 420px) {
     #app{
       width: 100%;
       height: 100%;
       .home-page {
-        @include wh(95%, 90%);
+        @include wh(100%, 90%);
         @include center;
         flex-direction: column;
+        justify-content: space-between;
+        .page-right{
+          align-items: center;
+        }
         .page-project {
-          section {
-            margin-left: 1rem;
-          }
+          width: 100%;
+          justify-content: space-between;
         }
       }
     }
+
   }
 
   .home-page {
@@ -73,18 +63,17 @@
     @include center;
     display: flex;
     .page-left {
+      flex-grow: 1;
       img {
         @include wh(100%, 100%);
       }
     }
     .page-right {
+      flex-grow: 1;
       @include sc(1.8rem, #C28E90);
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      h4:hover {
-        animation: titleMove 2s ease-in-out infinite;
-      }
       .title {
         @include wh(80%, 30%);
         margin: 1rem 0 2rem 0;
@@ -93,18 +82,17 @@
         }
       }
       .page-project {
-        width: 100%;
+        width: 85%;
         margin-top: 3rem;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
+        justify-content: space-between;
         section {
+          flex-grow: 1;
           cursor: pointer;
           text-align: center;
-          margin-left: 3rem;
           @each $bg in $bgImg {
             .#{$bg}-icon {
-              @include wh(75px, 80px);
+              @include wh(100%, 4rem);
               @include bis('./images/#{$bg}.svg');
               &:hover {
                 @include bis('./images/#{$bg}1.svg');
@@ -114,6 +102,7 @@
           }
           p {
             @include sc(1rem, #555);
+            margin-top: 3px;
           }
         }
       }

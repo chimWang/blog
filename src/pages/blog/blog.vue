@@ -6,8 +6,8 @@
         <h1>zerotop.top</h1>
       </div>
       <div class="head-nav">
-        <router-link tag="div" to="/blog">博客</router-link>
-        <router-link tag="div" to="/design">设计</router-link>
+        <router-link tag="div" to="/blog/blogList">博客</router-link>
+        <router-link tag="div" to="/blog/design">设计</router-link>
         <div>时间轴</div>
         <div>留言</div>
       </div>
@@ -23,6 +23,16 @@ export default{
 
 <style scoped lang="scss">
   @import "../../style/mixin";
+  @media only screen and (max-width: 420px) {
+    #app{
+      width: 100%;
+      height: 100%;
+      .head-nav {
+        justify-content: center;
+        width: 20rem;
+      }
+    }
+  }
   .blog {
     width: 100%;
     height: 100%;
@@ -52,6 +62,7 @@ export default{
         display: flex;
         justify-content: space-around;
         div{
+          cursor: pointer;
           padding: 5px 5px 5px 35px;
           &.router-link-active{
             font-size: 1.1rem;

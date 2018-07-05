@@ -1,103 +1,119 @@
 <template>
-  <div class="blog-main margin">
-    <aside class="blog-sort">
-      <div><img src="./images/emoji-1.svg"/><span>全部博客</span></div>
-      <div><img src="./images/emoji-12.svg"/><span>node</span></div>
-      <div><img src="./images/emoji-28.svg"/><span>phython</span></div>
-      <div><img src="./images/emoji-1.svg"/><span>sass</span></div>
-      <div><img src="./images/emoji-12.svg"/><span>mongoDB</span></div>
-      <div><img src="./images/emoji-28.svg"/><span>vue</span></div>
-    </aside>
-    <article class="blog-article">
-      <section class="blog-con margin" v-for="(items,index) in blogs" :key="index">
-        <div class="content margin">
-          <img :src=items.blogImg>
-          <div class="content-desc">
-            <h4 class="ellipsis">{{items.title}}</h4>
-            <div>
-              <time>{{items.date}}</time>
-              <button @click="readMore(items)"><b>Read More >></b></button>
+  <div>
+    <router-view></router-view>
+    <div class="blog-main margin" v-if="isShow">
+      <aside class="blog-sort">
+        <div><img src="./images/emoji-1.svg"/><span>全部博客</span></div>
+        <div><img src="./images/emoji-12.svg"/><span>node</span></div>
+        <div><img src="./images/emoji-28.svg"/><span>phython</span></div>
+        <div><img src="./images/emoji-1.svg"/><span>sass</span></div>
+        <div><img src="./images/emoji-12.svg"/><span>mongoDB</span></div>
+        <div><img src="./images/emoji-28.svg"/><span>vue</span></div>
+      </aside>
+      <article class="blog-article">
+        <section class="blog-con margin" v-for="(items,index) in blogs" :key="index">
+          <div class="content margin">
+            <img :src=items.blogImg>
+            <div class="content-desc">
+              <h4 class="ellipsis">{{items.title}}</h4>
+              <div>
+                <time>{{items.date}}</time>
+                <button @click="readMore(index+1)"><b>Read More >></b></button>
+              </div>
             </div>
           </div>
+        </section>
+      </article>
+      <aside class="blog-other">
+        <div class="other">
+          <div class="music" @click="playMusic">
+            <audio
+              src="http://www.zerotop.top/media/Aimer.mp3"
+              ref="mp3Btn"></audio>
+          </div>
+          <div class="book"></div>
+          <div class="date"></div>
+          <div @click="toTop" class="top" :class="{animate:animate}"></div>
         </div>
-      </section>
-    </article>
-    <aside class="blog-other">
-      <div class="other">
-        <div class="music" @click="playMusic">
-          <audio
-            src="http://m10.music.126.net/20180504103427/0c00e664c9eaa356a8fc86f18ec43a6a/ymusic/7615/9217/8620/bf610c9f7e95efcad2b5ccde600339bf.mp3"
-            ref="mp3Btn"></audio>
-        </div>
-        <div class="book"></div>
-        <div class="date"></div>
-        <div @click="toTop" class="top" :class="{animate:animate}"></div>
-      </div>
-    </aside>
+      </aside>
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-export default{
-  data () {
-    return {
-      animate: false,
-      blogs: [
-        {
-          blogImg: 'https://images.unsplash.com/photo-1522205940279-d75807ebcd91?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6e84041cbb7404fb7fafc42bec0f4a91&auto=format&fit=crop&w=500&q=60',
-          title: '欢迎来到zerotop',
-          date: '2018/5/2',
-          content: '微信小程序（wei xin xiao cheng xu），简称小程序，英文名Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。2017年1月9日，张小龙在2017微信公开课Pro上发布的小程序正式上线。'
-        },
-        {
-          blogImg: 'https://images.unsplash.com/photo-1507550442364-c0a42bd688e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=92c60a48a7b047b3a2b603cf6227ad2d&auto=format&fit=crop&w=500&q=60',
-          title: '微信小程序',
-          date: '2018/5/3',
-          content: '微信小程序（wei xin xiao cheng xu），简称小程序，英文名Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。2017年1月9日，张小龙在2017微信公开课Pro上发布的小程序正式上线。'
-        },
-        {
-          blogImg: 'https://images.unsplash.com/photo-1522205445560-4630427027e3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1d6dff78cad1ece4d14fbf6d50ac3325&auto=format&fit=crop&w=500&q=60',
-          title: '欢迎来到zerotop',
-          date: '2018/5/5',
-          content: '微信小程序（wei xin xiao cheng xu），简称小程序，英文名Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。2017年1月9日，张小龙在2017微信公开课Pro上发布的小程序正式上线。'
-        }
-      ]
+  export default{
+    data () {
+      return {
+        isShow: true,
+        animate: false,
+        blogs: [
+          {
+            blogImg: 'https://images.unsplash.com/photo-1522205940279-d75807ebcd91?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6e84041cbb7404fb7fafc42bec0f4a91&auto=format&fit=crop&w=500&q=60',
+            title: '欢迎来到zerotop',
+            date: '2018/5/2',
+            content: '微信小程序（wei xin xiao cheng xu），简称小程序，英文名Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。2017年1月9日，张小龙在2017微信公开课Pro上发布的小程序正式上线。'
+          },
+          {
+            blogImg: 'https://images.unsplash.com/photo-1507550442364-c0a42bd688e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=92c60a48a7b047b3a2b603cf6227ad2d&auto=format&fit=crop&w=500&q=60',
+            title: '微信小程序',
+            date: '2018/5/3',
+            content: '微信小程序（wei xin xiao cheng xu），简称小程序，英文名Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。2017年1月9日，张小龙在2017微信公开课Pro上发布的小程序正式上线。'
+          },
+          {
+            blogImg: 'https://images.unsplash.com/photo-1522205445560-4630427027e3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1d6dff78cad1ece4d14fbf6d50ac3325&auto=format&fit=crop&w=500&q=60',
+            title: '欢迎来到zerotop',
+            date: '2018/5/5',
+            content: '微信小程序（wei xin xiao cheng xu），简称小程序，英文名Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。2017年1月9日，张小龙在2017微信公开课Pro上发布的小程序正式上线。'
+          }
+        ]
 
-    }
-  },
-  methods: {
-    toTop () {
-      this.animate = true
-      setTimeout(() => {
-        document.body.scrollTop = document.documentElement.scrollTop = 0
-        this.animate = false
-      }, 1000)
-    },
-    playMusic () {
-      let audio = this.$refs.mp3Btn
-      if (audio.paused) {
-        audio.play()
-      } else {
-        audio.pause()
       }
     },
-    readMore (items) {
-      this.$router.push({
-        name: 'blogDetail',
-        params: {
-          id: 1
-        },
-        query: {
-          article: JSON.stringify(items)
+    methods: {
+      toTop () {
+        this.animate = true
+        setTimeout(() => {
+          document.body.scrollTop = document.documentElement.scrollTop = 0
+          this.animate = false
+        }, 1000)
+      },
+      playMusic () {
+        let audio = this.$refs.mp3Btn
+        if (audio.paused) {
+          audio.play()
+        } else {
+          audio.pause()
         }
-      })
-    }
+      },
+      readMore (index) {
+        this.$router.push({
+          name: 'blogDetail',
+          path: '/blog',
+          params: {
+            id: index
+          }
+        })
+      },
+    },
   }
-}
 </script>
 
 <style scoped lang="scss">
   @import "../../../../style/mixin";
+
+  @media only screen and (max-width: 420px) {
+    .blog-sort {
+      display: none;
+    }
+    .blog-other {
+      display: none;
+    }
+    .blog-article {
+      width: 100%;
+    }
+
+  }
+
   @keyframes bounce {
     0% {
       width: 50%;
@@ -122,6 +138,7 @@ export default{
       margin-bottom: 2rem;
     }
   }
+
   .blog-main {
     margin-top: 2rem;
     width: 90%;
@@ -200,8 +217,9 @@ export default{
       flex-grow: 1;
       text-align: center;
       .other {
-        @include cl;
-        bottom: 3rem;
+        position: fixed;
+        margin-left: 5%;
+        margin-top: 10%;
         div {
           margin-top: 3rem;
           cursor: pointer;

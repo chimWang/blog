@@ -1,10 +1,7 @@
 <template>
-  <div>
+  <div class="main">
     <div class="article margin">
-      <h2>{{article.title}}</h2>
-      <time>{{article.date}}</time>
-      <img :src="article.blogImg"/>
-      <p class="article-content">{{article.content}}</p>
+      <h2>第{{$route.params.id}}篇文章</h2>
       <div class="other">
         <img src="./images/like.svg"/>
         <img src="./images/share.svg"/>
@@ -17,7 +14,7 @@
       </header>
       <section v-for="(item,index) in comment" :key="index">
         <div class="info">
-          <h3>{{item.name}}<img src="./images/comment.svg"/></h3>
+          <h4>{{item.name}}<img src="./images/comment.svg"/></h4>
           <time>{{item.date}}</time>
         </div>
         <div class="comment-content">
@@ -29,36 +26,42 @@
 </template>
 
 <script type="text/ecmascript-6">
-export default{
-  data () {
-    return {
-      article: JSON.parse(this.$route.query.article),
-      comment: [
-        {
-          name: 'wcy',
-          date: '2018/5/5',
-          content: 'okokok'
-        },
-        {
-          name: 'chimWang',
-          date: '2018/5/5',
-          content: '不错不错不错不错'
-        },
-        {
-          name: 'gxy',
-          date: '2018/5/5',
-          content: '不错不错不错不错'
-        }
-      ]
-    }
-  },
-  methods: {}
-}
+  export default{
+    data () {
+      return {
+        comment: [
+          {
+            name: 'wcy',
+            date: '2018/5/5',
+            content: 'okokok'
+          },
+          {
+            name: 'chimWang',
+            date: '2018/5/5',
+            content: '不错不错不错不错'
+          },
+          {
+            name: 'gxy',
+            date: '2018/5/5',
+            content: '不错不错不错不错'
+          }
+        ]
+      }
+    },
+    methods: {},
+    created(){
+      alert(111111)
+    },
+//    watch: {
+//      '$route' (to,form) {
+//        console.log(to)
+//      }
+//    }
+  }
 </script>
 
 <style scoped lang="scss">
   @import "../../../../style/mixin";
-
   .article {
     @include font(1rem, 1.8rem);
     padding: 2rem 3rem;
@@ -66,8 +69,8 @@ export default{
     margin-top: 2rem;
     text-align: center;
     width: 60%;
-    time{
-      margin:1rem 0;
+    time {
+      margin: 1rem 0;
     }
     img {
       margin: 1rem 0 1rem 0;
@@ -88,29 +91,30 @@ export default{
       }
     }
   }
-  .comment{
+
+  .comment {
     margin: 1rem auto;
     width: 60%;
     border: 2px solid #ccc;
-    header{
+    header {
       display: flex;
       justify-content: space-between;
       padding: 8px;
       border-bottom: 1px solid #ccc;
     }
-    section{
+    section {
       padding: 2rem;
       border-bottom: 1px solid #ccc;
-      .info{
+      .info {
         display: flex;
         justify-content: space-between;
-        img{
+        img {
           margin-left: 5px;
           width: 20px;
           height: 100%;
         }
       }
-      .comment-content{
+      .comment-content {
         margin-top: 1rem;
       }
     }

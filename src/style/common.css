@@ -64,6 +64,27 @@ html, body {
 .right {
   float: right; }
 
+.center-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.left-bottom {
+  position: absolute;
+  left: 8px;
+  bottom: 8px; }
+
+.right-top {
+  position: absolute;
+  right: 8px;
+  top: 8px; }
+
+.right-bottom {
+  position: absolute;
+  right: 8px;
+  bottom: 8px; }
+
 .hide {
   display: none; }
 
