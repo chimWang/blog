@@ -8,7 +8,6 @@
       <div class="head-nav">
         <router-link tag="div" to="/blog/blogList">博客</router-link>
         <router-link tag="div" to="/blog/design">设计</router-link>
-        <div>时间轴</div>
         <div>留言</div>
       </div>
     </header>

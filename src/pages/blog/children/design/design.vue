@@ -75,8 +75,8 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { setLinePoints } from 'api/irregularCircle'
-  import { drawCircle } from 'api/irregularCircle'
+  import { setLinePoints } from './../../../../api/irregularCircle'
+  import { drawCircle } from './../../../../api/irregularCircle'
   export default{
     data(){
       return {
